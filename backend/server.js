@@ -24,7 +24,7 @@ const __dirname = dirname(__filename);
 const app = express();
 
 app.use(cors({
-  origin: ["https://melodious-zuccutto-eb3b15.netlify.app/", "http://localhost:3000/"],
+  origin: ["https://melodious-zuccutto-eb3b15.netlify.app", "http://localhost:3000"],
   methods: ["POST", "GET"],
   credentials: true
 }));
