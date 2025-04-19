@@ -29,20 +29,13 @@ app.use(cors({
   credentials: true
 }));
 
+
 app.use(express.json());
 
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/upload", uploadRouter);
-
-const publicFolder = path.join(__dirname, "public");
-app.use(express.static(publicFolder));
-
-app.get("*", (req, res) => {
-  const indexFilePath = path.join(publicFolder, "index.html");
-  return res.sendFile(indexFilePath);
-});
 
 app.get('/', (req, res) => {
   res.send({
