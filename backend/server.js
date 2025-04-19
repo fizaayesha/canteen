@@ -22,13 +22,13 @@ const __filename = fileURLToPath(
   import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
-app.use(
-  cors({
-    origin: ["https://food-delivery-ayeshas-projects-9378df48.vercel.app", "http://localhost:3000"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+
+app.use(cors({
+  origin: [""],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use("/api/foods", foodRouter);
