@@ -6,12 +6,14 @@ import { OrderModel } from '../models/order.model.js';
 import { OrderStatus } from '../constants/orderStatus.js';
 import { UserModel } from '../models/user.model.js';
 import { sendEmailReceipt } from '../helpers/mail.helper.js';
+import authMid from '../middleware/auth.mid.js';
 
 const router = Router();
 router.use(auth);
 
 router.post(
   '/create',
+  authMid,
   handler(async (req, res) => {
     const order = req.body;
 
