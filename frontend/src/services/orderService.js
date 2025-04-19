@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const BASE_URL = process.env.REACT_APP_SERVER_URL;
+
 const getAuthConfig = () => {
   const token = localStorage.getItem('token');
   return {
@@ -8,10 +10,12 @@ const getAuthConfig = () => {
     },
   };
 };
+
+// Create a new order
 export const createOrder = async (order) => {
   try {
     const { data } = await axios.post(
-      '/api/orders/create',
+      `${BASE_URL}/api/orders/create`,
       order,
       getAuthConfig()
     );
@@ -26,7 +30,7 @@ export const createOrder = async (order) => {
 export const getNewOrderForCurrentUser = async () => {
   try {
     const { data } = await axios.get(
-      '/api/orders/newOrderForCurrentUser',
+      `${BASE_URL}/api/orders/newOrderForCurrentUser`,
       getAuthConfig()
     );
     return data;
@@ -40,7 +44,7 @@ export const getNewOrderForCurrentUser = async () => {
 export const pay = async (paymentId) => {
   try {
     const { data } = await axios.put(
-      '/api/orders/pay',
+      `${BASE_URL}/api/orders/pay`,
       { paymentId },
       getAuthConfig()
     );
@@ -55,7 +59,7 @@ export const pay = async (paymentId) => {
 export const trackOrderById = async (orderId) => {
   try {
     const { data } = await axios.get(
-      `/api/orders/track/${orderId}`,
+      `${BASE_URL}/api/orders/track/${orderId}`,
       getAuthConfig()
     );
     return data;
@@ -69,7 +73,7 @@ export const trackOrderById = async (orderId) => {
 export const getAll = async (state) => {
   try {
     const { data } = await axios.get(
-      `/api/orders/${state ?? ''}`,
+      `${BASE_URL}/api/orders/${state ?? ''}`,
       getAuthConfig()
     );
     return data;
@@ -83,7 +87,7 @@ export const getAll = async (state) => {
 export const getAllStatus = async () => {
   try {
     const { data } = await axios.get(
-      '/api/orders/allstatus',
+      `${BASE_URL}/api/orders/allstatus`,
       getAuthConfig()
     );
     return data;
